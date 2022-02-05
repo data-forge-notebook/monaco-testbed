@@ -21,3 +21,9 @@ Run the dev server:
 ```bash
 npm start
 ```
+
+## Run Storybook
+
+```bash
+npm run storybook
+```
