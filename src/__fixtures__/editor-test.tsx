@@ -3,11 +3,8 @@ import * as ReactDOM from "react-dom";
 import { MonacoEditor } from "../components/monaco-editor";
 import { loadMonaco } from "./load-monaco";
 
-declare const document: HTMLDocument;
-declare var window: any;
-
 console.log("Loading Monaco...");
-loadMonaco(window.require)
+loadMonaco()
     .then(() => {
         console.log("Monaco loaded!");
 
