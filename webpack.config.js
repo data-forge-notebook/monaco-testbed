@@ -6,7 +6,7 @@ const outputDir = __dirname;
 
 module.exports = {
     entry: {
-        "editor-test": "./src/__fixtures__/editor-test.tsx",
+        "index": "./src/index.tsx",
     },
     output: {
         filename: "[name].js",
@@ -20,15 +20,7 @@ module.exports = {
 
     devServer: {
         contentBase: outputDir,
-        hotOnly: true,
-
-        // https://medium.com/@drgenejones/proxying-an-external-api-with-webpack-serve-code-and-a-restful-data-from-separate-endpoints-4da9b8daf430
-        proxy: {
-            '/api': {
-                target: 'http://localhost:3000',
-                secure: false
-            }
-        },
+        hot: false,
     },
 
     resolve: {
@@ -38,12 +30,6 @@ module.exports = {
 
     module: {
         rules: [
-            {
-                test: /\.jsx?$/,
-                loader: "shebang-loader",
-            },
-
-            // { test: /\.tsx?$/, loader: "awesome-typescript-loader", options: { transpileOnly: true } },
             { 
                 test: /\.tsx?$/, 
                 loader: "ts-loader", 
@@ -60,8 +46,5 @@ module.exports = {
             eslint: false
         }),
         new ForkTsCheckerNotifierWebpackPlugin({ title: 'TypeScript', excludeWarnings: false }),        
-
-        // https://hackernoon.com/react-with-typescript-and-webpack-654f93f34db6
-        new webpack.HotModuleReplacementPlugin(),
     ],
 };

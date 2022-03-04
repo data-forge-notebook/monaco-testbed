@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { MonacoEditor } from "../components/monaco-editor";
-import { loadMonaco } from "./load-monaco";
+import { MonacoEditor } from "./components/monaco-editor";
+import { loadMonaco } from "./lib/load-monaco";
 
 console.log("Loading Monaco...");
 loadMonaco()
