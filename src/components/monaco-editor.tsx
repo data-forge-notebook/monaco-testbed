@@ -1,6 +1,25 @@
 import * as React from 'react';
+import * as monaco from 'monaco-editor';
 
-declare const monaco: any;
+declare const self: any;
+
+self.MonacoEnvironment = {
+	getWorkerUrl: function (moduleId: any, label: string): string {
+		if (label === 'json') {
+			return './json.worker.bundle.js';
+		}
+		if (label === 'css' || label === 'scss' || label === 'less') {
+			return './css.worker.bundle.js';
+		}
+		if (label === 'html' || label === 'handlebars' || label === 'razor') {
+			return './html.worker.bundle.js';
+		}
+		if (label === 'typescript' || label === 'javascript') {
+			return './ts.worker.bundle.js';
+		}
+		return './editor.worker.bundle.js';
+	}
+};
 
 export interface IMonacoEditorProps {
 }
@@ -18,11 +37,11 @@ export class MonacoEditor extends React.Component<IMonacoEditorProps, IMonacoEdi
     //
     // Models created for the editor.
     //
-    editorModel: any; //monaco.editor.IModel | null = null;
+    editorModel: monaco.editor.IModel | null = null;
 
     // Docs
     // https://microsoft.github.io/monaco-editor/api/modules/monaco.editor.html
-    editor: any; //monaco.editor.IStandaloneCodeEditor | null = null;
+    editor: monaco.editor.IStandaloneCodeEditor | null = null;
 
     constructor(props: any) {
         super(props);
