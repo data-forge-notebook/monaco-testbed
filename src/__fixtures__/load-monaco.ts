@@ -10,9 +10,6 @@ export function loadMonaco() {
                 baseUrl: "lib/monaco-editor/min",
             });
     
-            // workaround monaco-css not understanding the environment
-            (self as any).module = undefined;
-        
             amdRequire(
                 ['vs/editor/editor.main'], 
                 () => {
