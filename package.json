@@ -8,7 +8,7 @@
     "s": "npm run start",
     "b": "npm run build",
     "build": "webpack",
-    "storybook": "start-storybook -s ./ -p 6006",
+    "storybook": "start-storybook -p 6006",
     "sb": "npm run storybook",
     "build-storybook": "build-storybook",
     "clean": "rm -rf ./dist"
@@ -19,6 +19,8 @@
     "@storybook/addon-docs": "^6.4.18",
     "@storybook/addon-essentials": "^6.4.18",
     "@storybook/addon-links": "^6.4.18",
+    "@storybook/builder-webpack5": "^6.4.19",
+    "@storybook/manager-webpack5": "^6.4.19",
     "@storybook/react": "^6.4.18",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
