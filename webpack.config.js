@@ -62,9 +62,7 @@ module.exports = {
     },
 
     plugins: [
-        new ForkTsCheckerWebpackPlugin({
-            eslint: false
-        }),
+        new ForkTsCheckerWebpackPlugin(),
         new ForkTsCheckerNotifierWebpackPlugin({ title: 'TypeScript', excludeWarnings: false }),        
 
         new CopyWebpackPlugin({
