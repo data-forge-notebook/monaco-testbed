@@ -1,6 +1,10 @@
 import * as React from 'react';
 import * as monaco from 'monaco-editor';
 
+monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
+    diagnosticCodesToIgnore: [ 1375, 1378 ],
+});
+
 declare const self: any;
 
 self.MonacoEnvironment = {
@@ -54,9 +58,9 @@ export class MonacoEditor extends React.Component<IMonacoEditorProps, IMonacoEdi
     componentDidMount() {
         this.editorModel = monaco.editor.createModel(
             "let x = 1;",
-            "javascript"
+            "typescript"
         );
-        
+
         // https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditorconstructionoptions.html
         const options: monaco.editor.IStandaloneEditorConstructionOptions = {
             model: this.editorModel,
