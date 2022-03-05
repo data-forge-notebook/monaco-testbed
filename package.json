@@ -31,7 +31,6 @@
     "file-loader": "^6.2.0",
     "fork-ts-checker-notifier-webpack-plugin": "^6.0.0",
     "fork-ts-checker-webpack-plugin": "^7.2.1",
-    "monaco-editor-webpack-plugin": "^7.0.1",
     "source-map-loader": "^0.2.4",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.7",
