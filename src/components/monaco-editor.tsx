@@ -2,27 +2,27 @@ import * as React from 'react';
 import * as monaco from 'monaco-editor';
 
 monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
-    diagnosticCodesToIgnore: [ 1375, 1378 ],
+    diagnosticCodesToIgnore: [1375, 1378],
 });
 
 declare const self: any;
 
 self.MonacoEnvironment = {
-	getWorkerUrl: function (moduleId: any, label: string): string {
-		if (label === 'json') {
-			return './json.worker.bundle.js';
-		}
-		if (label === 'css' || label === 'scss' || label === 'less') {
-			return './css.worker.bundle.js';
-		}
-		if (label === 'html' || label === 'handlebars' || label === 'razor') {
-			return './html.worker.bundle.js';
-		}
-		if (label === 'typescript' || label === 'javascript') {
-			return './ts.worker.bundle.js';
-		}
-		return './editor.worker.bundle.js';
-	}
+    getWorkerUrl: function (moduleId: any, label: string): string {
+        if (label === 'json') {
+            return './json.worker.bundle.js';
+        }
+        if (label === 'css' || label === 'scss' || label === 'less') {
+            return './css.worker.bundle.js';
+        }
+        if (label === 'html' || label === 'handlebars' || label === 'razor') {
+            return './html.worker.bundle.js';
+        }
+        if (label === 'typescript' || label === 'javascript') {
+            return './ts.worker.bundle.js';
+        }
+        return './editor.worker.bundle.js';
+    }
 };
 
 export interface IMonacoEditorProps {
@@ -69,13 +69,13 @@ export class MonacoEditor extends React.Component<IMonacoEditorProps, IMonacoEdi
         this.editor = monaco.editor.create(this.containerElement.current!, options);
     }
 
-    componentWillUnmount () {
+    componentWillUnmount() {
 
         if (this.editorModel) {
             this.editorModel.dispose();
             this.editorModel = null;
         }
-        
+
         if (this.editor) {
             this.editor.dispose();
             this.editor = null;
@@ -83,16 +83,16 @@ export class MonacoEditor extends React.Component<IMonacoEditorProps, IMonacoEdi
 
     }
 
-    render () {
+    render() {
         return (
-            <div 
-                ref={this.containerElement} 
+            <div
+                ref={this.containerElement}
                 style={{
                     width: "100%",
                     height: "600px",
                     border: "1px solid gray",
                 }}
-                />
+            />
         );
     }
 }
