@@ -1,8 +1,40 @@
 import * as React from 'react';
 import * as monaco from 'monaco-editor';
 
+monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
+    noSemanticValidation: false,
+    noSyntaxValidation: false,
+    noSuggestionDiagnostics: false,
+
+    // https://stackoverflow.com/questions/55116965/is-it-possible-to-remove-certain-errors-from-monaco-editor/71145347#71145347
+    diagnosticCodesToIgnore: [1375, 1378], // Allow "await" at the top level.
+});
+
 monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
-    diagnosticCodesToIgnore: [1375, 1378],
+    noSemanticValidation: false,
+    noSyntaxValidation: false,
+    noSuggestionDiagnostics: false,
+
+    // https://stackoverflow.com/questions/55116965/is-it-possible-to-remove-certain-errors-from-monaco-editor/71145347#71145347
+    diagnosticCodesToIgnore: [1375, 1378], // Allow "await" at the top level.
+});
+
+monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
+    target: monaco.languages.typescript.ScriptTarget.ES2016,
+    allowNonTsExtensions: true,
+    moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+    module: monaco.languages.typescript.ModuleKind.CommonJS,
+    noEmit: true,
+    typeRoots: ["node_modules/@types"],
+});
+
+monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+    target: monaco.languages.typescript.ScriptTarget.ES2016,
+    allowNonTsExtensions: true,
+    moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
+    module: monaco.languages.typescript.ModuleKind.CommonJS,
+    noEmit: true,
+    typeRoots: ["node_modules/@types"],
 });
 
 declare const self: any;
@@ -57,8 +89,8 @@ export class MonacoEditor extends React.Component<IMonacoEditorProps, IMonacoEdi
 
     componentDidMount() {
         this.editorModel = monaco.editor.createModel(
-            "let x = 1;",
-            "typescript"
+            "async function hello() {\n}\n\nawait hello();\n\nconst x = 5;\n\nconst x = 3;",
+            "javascript"
         );
 
         // https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditorconstructionoptions.html
