@@ -58,7 +58,7 @@ export class MonacoEditor extends React.Component<IMonacoEditorProps, IMonacoEdi
         );
         
         // https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditorconstructionoptions.html
-        const options: any /*todo: monaco.editor.IEditorConstructionOptions*/ = {
+        const options: monaco.editor.IStandaloneEditorConstructionOptions = {
             model: this.editorModel,
         };
 
